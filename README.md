@@ -1,6 +1,11 @@
 # Bitmap
 
-Very simple bitmap library in C.
+A bitmap is a data structure that implements an array of booleans in a very
+memory efficient way; albeit the time complexity of this implementation
+isn't constant, given the fact cpu registers will store the same bytes in
+them for a prolonged period of time with accesses restricted to the
+same memory region, this data structure often outperforms others with
+better time complexity.
 
 # API
 
