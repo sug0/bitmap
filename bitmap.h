@@ -4,7 +4,7 @@
 
 typedef struct _bm {
     uint8_t *bits;
-    size_t max_index;
+    size_t size;
 } Bitmap_t;
 
 extern void Bitmap_init(Bitmap_t *bm, size_t sz);

@@ -28,7 +28,7 @@ void Bitmap_init(Bitmap_t *bm, size_t sz)
 {
     assert (sz > 0);
 
-    bm->max_index = sz - 1;
+    bm->size = sz;
     bm->bits = calloc(calc_bytes(sz), sizeof(uint8_t));
 
     if (!bm->bits) {
@@ -39,7 +39,7 @@ void Bitmap_init(Bitmap_t *bm, size_t sz)
 
 inline uint8_t Bitmap_at(Bitmap_t *bm, size_t index)
 {
-    assert (index <= bm->max_index);
+    assert (index < bm->size);
     uint8_t *bits = &bm->bits[calc_index(index)];
     index %= 8;
     return (1 << index) & *bits;
@@ -47,7 +47,7 @@ inline uint8_t Bitmap_at(Bitmap_t *bm, size_t index)
 
 inline void Bitmap_set(Bitmap_t *bm, size_t index, uint8_t set_bit)
 {
-    assert (index <= bm->max_index);
+    assert (index < bm->size);
 
     uint8_t *bits = &bm->bits[calc_index(index)];
     index %= 8;
